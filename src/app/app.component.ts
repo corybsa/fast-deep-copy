@@ -12,7 +12,7 @@ import { simpleObject } from './models/simple';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'benchmark';
+  title = 'fast-deep-copy';
   iterations = 1000;
   copyTime: number = 0;
   fastCopyTime: number = 0;
