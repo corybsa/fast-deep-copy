@@ -32,8 +32,6 @@ export class AppComponent {
     }
     const end = window.performance.now();
     this.copyTime = end - start;
-
-    
   }
 
   fastCopy() {
