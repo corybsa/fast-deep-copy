@@ -4,6 +4,12 @@ The fastest deep copy function in the universe.
 
 Honestly though, I think something is wrong with it... how is it so fast?
 
+Crude benchmark code can be found in `src/app/app.component.ts` and results are below:
+
+![img](src/assets/benchmark.png)
+
+`fast-copy` refers to another [fast copy library](https://github.com/planttheidea/fast-copy).
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
 
 ## Development server
