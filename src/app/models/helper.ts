@@ -1,12 +1,15 @@
 export class Helper {
-  private static visited = Symbol('visited');
-  private static stopProcessing = false;
+    private static visited = Symbol('visited');
 
+  /**
+   * Creates a deep copy of {@link object}.
+   *
+   * @param object any
+   * @returns {any} a copy of {@link object}.
+   */
   static copy(object: any): any {
-    // dates
     if (object instanceof Date) {
       return new Date(object.getTime());
-    // arrays
     } else if (object instanceof Array) {
       const target = [];
 
@@ -15,33 +18,21 @@ export class Helper {
       }
 
       return target;
-    // objects
     } else if (object instanceof Object) {
       if(object[this.visited]) {
-        delete object[this.visited];
-        return object;
-      }
-
-      if(this.stopProcessing) {
+        object[this.visited] = false;
         return object;
       }
 
       object[this.visited] = true;
-
-      const target: any = {};
+      const target: { [key: string]: any[] } = {};
 
       for (const prop in object) {
         if (object.hasOwnProperty(prop)) {
-          if(object[this.visited]) {
-            delete object[this.visited];
-            this.stopProcessing = true;
-          }
-
           target[prop] = Helper.copy(object[prop]);
         }
       }
 
-      this.stopProcessing = false;
       return target;
     } else {
       // it's a primitive
